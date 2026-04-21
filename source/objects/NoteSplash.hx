@@ -287,7 +287,12 @@ class NoteSplash extends FlxSprite
 			offset.y += offsets[1];
 		}
 
+		var funnyTween:FlxTween = FlxTween.tween(this.scale, {x: 1.2, y: 1.2}, 1, {ease: FlxEase.quadOut});
+		var funnyTweenA:FlxTween = FlxTween.tween(this, {alpha: 0}, 1, {ease: FlxEase.quadOut});
+
 		animation.finishCallback = function(name:String) {
+			funnyTween.cancel();
+			funnyTweenA.cancel();
 			kill();
 			spawned = false;
 		}
